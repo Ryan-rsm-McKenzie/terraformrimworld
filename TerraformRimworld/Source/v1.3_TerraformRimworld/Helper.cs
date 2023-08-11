@@ -285,7 +285,7 @@ namespace TerraformRimworld
 					{
 						emiter.comps = new List<CompProperties>();
 						CompProperties_Power cpr = new CompProperties_Power();
-						cpr.basePowerConsumption = energyCosts;
+						cpr.SetMemberValue("basePowerConsumption", energyCosts);
 						cpr.compClass = typeof(CompPowerTrader);
 						cpr.shortCircuitInRain = false;
 						cpr.transmitsPower = false;

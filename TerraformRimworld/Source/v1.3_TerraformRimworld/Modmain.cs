@@ -70,6 +70,8 @@ namespace TerraformRimworld
 	{
 		#region vars
 
+		public static HashSet<ushort> takenHashes = new HashSet<ushort>();
+
 		#region mod options
 
 		public static bool OPTION_AlternativeIcon;

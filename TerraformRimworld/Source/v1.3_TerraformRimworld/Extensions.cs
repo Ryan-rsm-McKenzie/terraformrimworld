@@ -1,3 +1,4 @@
+using HugsLib.Utils;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -180,19 +181,23 @@ namespace TerraformRimworld
 			td.ResolveReferences();
 			td.PostLoad();
 
-			MethodInfo shortHashGiver = typeof(ShortHashGiver).GetMethod(name: "GiveShortHash", bindingAttr: BindingFlags.NonPublic | BindingFlags.Static) ?? throw new ArgumentNullException();
 			Type t = typeof(ThingDef);
-			shortHashGiver.Invoke(obj: null, parameters: new object[] { td, t });
-			if (td.minifiedDef != null)
-				shortHashGiver.Invoke(obj: null, parameters: new object[] { minifiedDef, t });
-			shortHashGiver.Invoke(obj: null, parameters: new object[] { td.blueprintDef, t });
-			shortHashGiver.Invoke(obj: null, parameters: new object[] { td.frameDef, t });
+			InjectedDefHasher.GiveShortHashToDef(td, t);
+			InjectedDefHasher.GiveShortHashToDef(td.blueprintDef, t);
+			InjectedDefHasher.GiveShortHashToDef(td.frameDef, t);
 
 			DefDatabase<ThingDef>.Add(td);
 			if (td.minifiedDef != null)
 				DefDatabase<ThingDef>.Add(minifiedDef);
 			DefDatabase<ThingDef>.Add(td.blueprintDef);
 			DefDatabase<ThingDef>.Add(td.frameDef);
+		}
+
+		public static void TryGiveShortHashThingDef(ThingDef td)
+		{
+			MethodInfo shortHashGiver = Reflect.GetMethodInfo(typeof(ShortHashGiver), "GiveShortHash");
+			Type t = typeof(ThingDef);
+			shortHashGiver.CallMethod(new object[] { td, t, TRMod.takenHashes });
 		}
 
 		public static void SetGraphicDataSingle(this ThingDef td, string texPath, string uiTexPath)

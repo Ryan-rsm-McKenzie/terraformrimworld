@@ -297,7 +297,7 @@ namespace TerraformRimworld
 		public void StartWeatherEmiter()
 		{
 			if (cpt.PowerOn)
-				cpt.PowerOutput = -cpt.Props.basePowerConsumption;
+				cpt.PowerOutput = -(float)cpt.Props.GetMemberValue("basePowerConsumption");
 			else
 				return;
 

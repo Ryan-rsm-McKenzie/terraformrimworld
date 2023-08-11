@@ -9,7 +9,7 @@ namespace TerraformRimworld
 {
 	#region designator Area Add Overhanging Mountains
 
-	public class Designator_AreaOvermountain : Designator_Area
+	public class Designator_AreaOvermountain : Designator
 	{
 		public static List<IntVec3> noThingCells = new List<IntVec3>();
 
@@ -86,7 +86,7 @@ namespace TerraformRimworld
 
 	#region designator Area destroy
 
-	public class Designator_AreaNoThings : Designator_Area
+	public class Designator_AreaNoThings : Designator
 	{
 		public static List<IntVec3> noThingCells = new List<IntVec3>();
 
@@ -167,7 +167,7 @@ namespace TerraformRimworld
 
 	#region designator Area Remove Overhanging Mountains
 
-	public class Designator_AreaNoRockyRoof : Designator_Area
+	public class Designator_AreaNoRockyRoof : Designator
 	{
 		private static List<IntVec3> justAddedCells = new List<IntVec3>();
 
