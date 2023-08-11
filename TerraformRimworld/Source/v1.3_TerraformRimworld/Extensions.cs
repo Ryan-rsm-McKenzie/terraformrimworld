@@ -183,6 +183,8 @@ namespace TerraformRimworld
 
 			Type t = typeof(ThingDef);
 			InjectedDefHasher.GiveShortHashToDef(td, t);
+			if (td.minifiedDef != null)
+				InjectedDefHasher.GiveShortHashToDef(minifiedDef, t);
 			InjectedDefHasher.GiveShortHashToDef(td.blueprintDef, t);
 			InjectedDefHasher.GiveShortHashToDef(td.frameDef, t);
 
