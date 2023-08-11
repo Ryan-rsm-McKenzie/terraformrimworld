@@ -1,3 +1,4 @@
+using HugsLib.Utils;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -184,9 +185,7 @@ namespace TerraformRimworld
 					t.graphicData = new GraphicData();
 					t.graphicData.color = Color.white;
 
-					MethodInfo shortHashGiver = typeof(ShortHashGiver).GetMethod(name: "GiveShortHash", bindingAttr: BindingFlags.NonPublic | BindingFlags.Static) ?? throw new ArgumentNullException();
-					Type type = typeof(ThingDef);
-					shortHashGiver.Invoke(obj: null, parameters: new object[] { t, type });
+					InjectedDefHasher.GiveShortHashToDef(t, typeof(ThingDef));
 
 					t.ResolveReferences();
 					t.PostLoad();
@@ -268,9 +267,7 @@ namespace TerraformRimworld
 					t.graphicData = new GraphicData();
 					t.graphicData.color = dicColors[key];
 
-					MethodInfo shortHashGiver = typeof(ShortHashGiver).GetMethod(name: "GiveShortHash", bindingAttr: BindingFlags.NonPublic | BindingFlags.Static) ?? throw new ArgumentNullException();
-					Type type = typeof(ThingDef);
-					shortHashGiver.Invoke(obj: null, parameters: new object[] { t, type });
+					InjectedDefHasher.GiveShortHashToDef(t, typeof(ThingDef));
 
 					t.ResolveReferences();
 					t.PostLoad();
@@ -296,9 +293,7 @@ namespace TerraformRimworld
 					t.graphicData = new GraphicData();
 					t.graphicData.color = Color.white;
 
-					MethodInfo shortHashGiver = typeof(ShortHashGiver).GetMethod(name: "GiveShortHash", bindingAttr: BindingFlags.NonPublic | BindingFlags.Static) ?? throw new ArgumentNullException();
-					Type type = typeof(ThingDef);
-					shortHashGiver.Invoke(obj: null, parameters: new object[] { t, type });
+					InjectedDefHasher.GiveShortHashToDef(t, typeof(ThingDef));
 
 					t.ResolveReferences();
 					t.PostLoad();
